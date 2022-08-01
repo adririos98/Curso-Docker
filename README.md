@@ -70,7 +70,7 @@ En docker se dispone de 3 tipos de redes preconfiguradas para poder ser usadas:
 * Para listar las redes que ya se tienen creadas:
 > docker network ls 
 * Para inspeccionar una red:
-> docker network inspect bridge
+> docker network inspect [Nombre_red]
 * Para crear una red nueva:
 > docker network create [Nombre_red]
 
