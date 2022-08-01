@@ -51,7 +51,7 @@ Se puede asignar recursos definidos como el % de CPU, el % de RAM a los contened
 * Para ejecutar comandos en un contenedor sin llegar a entrar en él:
 > docker exec [ID_CONTAINER] mkdir -p /tmp/prueba-epg  
 > docker exec [ID_CONTAINER] ls -lta /tmp 
-o en una única linea:
+* En una única linea las dos anteriores:
 > docker exec [ID_CONTAINER] mkdir -p /tmp/prueba-epg  ||  docker exec [ID_CONTAINER] ls -lta /tmp 
 * Para eliminar un contenedor:
 > docker rm -fv [ID_CONTAINER]
