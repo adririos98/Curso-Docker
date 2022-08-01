@@ -15,7 +15,7 @@ Las imágenes en Docker, es el núcleo de un contenedor, es decir, sin la imagen
 > docker search [Nombre_imagen] 
 
 #### 1.1.2. Docker Hub.
-es el repositorio publico que usa Docker para poder descargar imágenes, no obstante también se puede disponer de un registry propio (dockerhub.hi.inet)
+Es el repositorio publico que usa Docker para poder descargar imágenes, no obstante también se puede disponer de un registry propio (dockerhub.hi.inet)
 
 * Descargar imagen.
 > docker pull [Nombre_imagen] 
