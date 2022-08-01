@@ -74,7 +74,7 @@ En docker se dispone de 3 tipos de redes preconfiguradas para poder ser usadas:
 * Para crear una red nueva:
 > docker network create [Nombre_red]
 
-#### ¿Como se usa la red en un contenedor?
+#### 1.3.1. ¿Como se usa la red en un contenedor?
 Si no se indica el tipo de red, por defecto sera **bridge**
 
 * Para crear una red especifica:
