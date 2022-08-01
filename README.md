@@ -105,3 +105,38 @@ Este sistema nos permite ver esa carpeta desde el contenedor y también desde nu
 
 * Ejemplo:
 > docker run -d -it --name [NOMBRE_CONTENEDOR] --tmpfs [/RUTA/TEMPORAL] [NOMBRE_IMAGEN]
+
+## Personalizando una imagen a nuestro gusto.
+Un Dockerfile es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.
+
+Es como la receta necesaria para un banquete, en este caso el Dockerfile es necesario para la imagen que queramos construir, el Dockerfile es la receta y el gran banquete será nuestra imagen.
+
+``` bash
+# Descarga la imagen de Ubuntu 22.04
+FROM ubuntu:22.04
+# Mantenedor del contenedor
+MAINTANER Adrián Hernández Rios e.epgsev1.tid@telefonica.com
+
+# Actualiza la imagen base de Ubuntu 14.04
+RUN apt-get update
+
+# Definir ambiente de entorno
+ENV PRUEBAVAR valorholaEQUIPO
+
+# Instalar Git
+RUN apt-get -qqy install git
+
+# Ejecuta el commando apt-get install y elimina determinados archivos y temporales
+RUN apt-get install -y nginx \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Indica los puertos TCP/IP los cuales se pueden accede a los servicios del contenedor
+EXPOSE 80
+
+# Establece el commando del proceso de inicio del contenedor
+
+CMD [“nginx”]
+
+```
+
+## 2. Level UP - DOCKER-COMPOSE.
