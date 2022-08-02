@@ -160,6 +160,7 @@ CMD [“nginx”]
     - Debe tener instalado git y curl.
  
  b) Averiguar el comando para generar la imagen a partir de un fichero de dockerfile. **[INVESTIGACIÓN]**
+    
     > docker build --file [Nombre_fichero] -t [NOMBRE_IMAGEN:ETIQUETA] . 
  
  c) Crear un contenedor con la imagen creada.
