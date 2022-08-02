@@ -7,7 +7,7 @@ Curso de docker desde cero y para todos.
 - https://docs.docker.com/compose/
 - https://docs.docker.com/machine/
 
-## 1. Introducción a los conceptos de docker.
+## 1. Introducción a los conceptos de docker. [NOVATO]
 ### 1.1. Imágenes.
 Las imágenes en Docker, es el núcleo de un contenedor, es decir, sin la imagen el contenedor no puede existir. Las imágenes albergan un sistema operativo, una aplicación, un sandbox, etc. Las imágenes se pueden personalizar para crear desarrollos personalizados a nuestras necesidades. Dentro de una imagen podemos indicarle que puerto usar así como la ejecución de un script de requerirse. Multi-stage (Significado: Ejecución de un número determinado de imágenes para obtener una imagen como resultado)
 
@@ -168,7 +168,14 @@ CMD [“nginx”]
 #### EJERCICIO 3. Resolver KAHOOT.
 [Test Introducción Docker](**PENDIENTE**)
 
-## 2. Level UP - DOCKER-COMPOSE.
+
+## 2. Level UP - DOCKER-COMPOSE. [INTERMEDIO]
 herramienta para definir y ejecutar aplicaciones Docker multicontenedor que permite simplificar el uso de Docker a partir de archivos YAML, de está forma es mas sencillo crear contenedores que se relacionen entre sí, conectarlos, habilitar puertos, volúmenes, etc. Nos permite lanzar un solo comando para crear e iniciar todos los servicios desde su configuración(YAML), esto significa que puedes crear diferentes contenedores y al mismo tiempo diferentes servicios en cada contenedor, integrarlos a un volumen común e iniciarlos y/o apagarlos, etc. Este es un componente fundamental para poder construir aplicaciones y microservicios.
 Docker-Compose funciona en todos los entornos: production, staging, development, testing, así como flujos de trabajo basados en Continuous Integration(CI).
 
+
+## 3. Level TOP - DOCKER SWARM. [EXPERTO] 
+**ESTE APARTADO ES OPCIONAL PARA TODOS AQUELLOS QUE QUIERAN SEGUIR APRENDIENDO DE DOCKER.**
+Es una herramienta que permite a los desarrolladores implementar contenedores en modo swarm. Un clúster Swarm consiste en Docker Engine implementado en múltiples nodos. Los nodos de administración realizan la orquestación y la administración del clúster. Los nodos de trabajo reciben y ejecutan tareas desde los nodos de administración.
+
+Un servicio consiste en tareas que puedes ejecutarse en nodos de Swarm. Los servicios se pueden replicar para ejecutarse en multiples nodos. En el modelo de servicio replicados, el equilibrio de carga de ingreso y el DNS internos se pueden usar para proporcionar puntos finales de servicio altamente disponibles.
