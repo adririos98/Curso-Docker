@@ -117,15 +117,8 @@ Este sistema nos permite ver esa carpeta desde el contenedor y también desde nu
 * Ejemplo:
 > docker run -d -it --name [NOMBRE_CONTENEDOR] --tmpfs [/RUTA/TEMPORAL] [NOMBRE_IMAGEN]
 
-### 1.6 Personalizar un contenedor que se encuentra corriendo. EJERCICIO
-1. Hacer correr un contenedor ubuntu.
-2. Acceder al contenedor.
-3. Crear un fichero en /tmp.
-4. Generar una imagen del contenedor mientras se encuentra corriendo. (**docker commit [ID_CONTENEDOR]**)
-5. Asignar un nombre a la imagen creada. (**docker tag [ID_IMAGEN] [NOMBRE:ETIQUETA]**)
-6. Probar que el fichero existe en esta nueva imagen.
 
-## Personalizando una imagen a nuestro gusto.
+### 1.6 Personalizando una imagen a nuestro gusto.
 Un Dockerfile es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.
 
 Es como la receta necesaria para un banquete, en este caso el Dockerfile es necesario para la imagen que queramos construir, el Dockerfile es la receta y el gran banquete será nuestra imagen.
@@ -149,9 +142,19 @@ EXPOSE 80
 # Establece el commando del proceso de inicio del contenedor
 CMD [“nginx”]
 ```
+### EJERCICIOS FINALES. 
+**Guarda todos los comandos y salidas mostradas de tu consola.**
 
-## Ejercicio FINAL INTRODUCCIÓN:
- a) Realizar una imagen mediante dockerfile. (Nombre del fichero **Dockefilelabs-[TUNOMBRE]**)
+#### EJERCICIO 1. Personalizar un contenedor que se encuentra corriendo.
+1. Hacer correr un contenedor ubuntu.
+2. Acceder al contenedor.
+3. Crear un fichero en /tmp.
+4. Generar una imagen del contenedor mientras se encuentra corriendo. (**docker commit [ID_CONTENEDOR]**)
+5. Asignar un nombre a la imagen creada. (**docker tag [ID_IMAGEN] [NOMBRE:ETIQUETA]**)
+6. Probar que el fichero existe en esta nueva imagen.
+
+#### EJERCICIO 2. Personalizar un contenedor mediante dockerfile y acceder a él.
+ a) Realizar una imagen mediante dockerfile. (Nombre del fichero **Dockerfilelabs-[TUNOMBRE]**)
     - Debe contener 4 variables definidas en el dockerfile (*Las que quieras*)
     - Debe exponer el puerto 80 y 443
     - Debe tener instalado git y curl.
@@ -159,7 +162,8 @@ CMD [“nginx”]
     > docker build --file [Nombre_fichero] -t [NOMBRE_IMAGEN:ETIQUETA] . 
  c) Crear un contenedor con la imagen creada.
 
-
+#### EJERCICIO 3. Resolver KAHOOT.
+[Test Introducción Docker](**PENDIENTE**)
 
 ## 2. Level UP - DOCKER-COMPOSE.
 herramienta para definir y ejecutar aplicaciones Docker multicontenedor que permite simplificar el uso de Docker a partir de archivos YAML, de está forma es mas sencillo crear contenedores que se relacionen entre sí, conectarlos, habilitar puertos, volúmenes, etc. Nos permite lanzar un solo comando para crear e iniciar todos los servicios desde su configuración(YAML), esto significa que puedes crear diferentes contenedores y al mismo tiempo diferentes servicios en cada contenedor, integrarlos a un volumen común e iniciarlos y/o apagarlos, etc. Este es un componente fundamental para poder construir aplicaciones y microservicios.
