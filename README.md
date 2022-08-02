@@ -158,8 +158,10 @@ CMD [“nginx”]
     - Debe contener 4 variables definidas en el dockerfile (*Las que quieras*)
     - Debe exponer el puerto 80 y 443
     - Debe tener instalado git y curl.
+ 
  b) Averiguar el comando para generar la imagen a partir de un fichero de dockerfile. **[INVESTIGACIÓN]**
     > docker build --file [Nombre_fichero] -t [NOMBRE_IMAGEN:ETIQUETA] . 
+ 
  c) Crear un contenedor con la imagen creada.
 
 #### EJERCICIO 3. Resolver KAHOOT.
