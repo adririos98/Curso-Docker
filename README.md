@@ -106,6 +106,14 @@ Este sistema nos permite ver esa carpeta desde el contenedor y también desde nu
 * Ejemplo:
 > docker run -d -it --name [NOMBRE_CONTENEDOR] --tmpfs [/RUTA/TEMPORAL] [NOMBRE_IMAGEN]
 
+### 1.5 Personalizar un contenedor que se encuentra corriendo. EJERCICIO
+1. Hacer correr un contenedor.
+2. Acceder al contenedor.
+3. Crear un fichero en /tmp.
+4. Guardar el contenedor (**docker commit [ID_CONTENEDOR]**)
+5. Asignar un nombre al contenedor creado (**docker tag [ID_IMAGEN] [NOMBRE:ETIQUETA]**)
+6. Probar que el fichero existe en esta nueva imagen.
+
 ## Personalizando una imagen a nuestro gusto.
 Un Dockerfile es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.
 
