@@ -107,7 +107,7 @@ Este sistema nos permite ver esa carpeta desde el contenedor y también desde nu
 > docker run -d -it --name [NOMBRE_CONTENEDOR] --tmpfs [/RUTA/TEMPORAL] [NOMBRE_IMAGEN]
 
 ### 1.5 Personalizar un contenedor que se encuentra corriendo. EJERCICIO
-1. Hacer correr un contenedor.
+1. Hacer correr un contenedor ubuntu.
 2. Acceder al contenedor.
 3. Crear un fichero en /tmp.
 4. Generar una imagen del contenedor mientras se encuentra corriendo. (**docker commit [ID_CONTENEDOR]**)
