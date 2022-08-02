@@ -6,6 +6,7 @@ Curso de docker desde cero y para todos.
 - https://docs.docker.com/install/linux/docker-ce/ubuntu/
 - https://docs.docker.com/compose/
 - https://docs.docker.com/machine/
+- https://docs.docker.com/engine/reference/commandline/docker/
 
 ## 1. Introducción a los conceptos de docker. [NOVATO]
 ### 1.1. Imágenes.
@@ -116,6 +117,12 @@ Este sistema nos permite ver esa carpeta desde el contenedor y también desde nu
 
 * Ejemplo:
 > docker run -d -it --name [NOMBRE_CONTENEDOR] --tmpfs [/RUTA/TEMPORAL] [NOMBRE_IMAGEN]
+
+#### 1.5.1 Copiar ficheros a un contenedor.
+* Copiar ficheros desde un contenedor al equipo físico.
+> docker cp [ID_CONTAINER:RUTA_CONTENEDOR] [RUTA_HOST_FISICO]
+* Copiar desde Host físico hasta el contenedor.
+> docker cp [RUTA_HOST_FISICO] [ID_CONTAINER:RUTA_CONTENEDOR] 
 
 
 ### 1.6 Personalizando una imagen a nuestro gusto.
