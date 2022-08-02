@@ -142,7 +142,7 @@ EXPOSE 80
 # Establece el commando del proceso de inicio del contenedor
 CMD [“nginx”]
 ```
-### EJERCICIOS FINALES. 
+### EJERCICIOS FINALES. INTRODUCCIÓN. 
 **Guarda todos los comandos y salidas mostradas de tu consola.**
 
 #### EJERCICIO 1. Personalizar un contenedor que se encuentra corriendo.
