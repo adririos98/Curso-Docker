@@ -175,7 +175,8 @@ Docker-Compose funciona en todos los entornos: production, staging, development,
 
 
 ## 3. Level TOP - DOCKER SWARM. [EXPERTO] 
-**ESTE APARTADO ES OPCIONAL PARA TODOS AQUELLOS QUE QUIERAN SEGUIR APRENDIENDO DE DOCKER.**
+**ESTE APARTADO ES OPCIONAL. ESTA DISEÑADO PARA TODOS AQUELLOS QUE QUIERAN SEGUIR APRENDIENDO SOBRE DOCKER Y SU SOLUCIÓN DE CLUSTER.**
+
 Es una herramienta que permite a los desarrolladores implementar contenedores en modo swarm. Un clúster Swarm consiste en Docker Engine implementado en múltiples nodos. Los nodos de administración realizan la orquestación y la administración del clúster. Los nodos de trabajo reciben y ejecutan tareas desde los nodos de administración.
 
 Un servicio consiste en tareas que puedes ejecutarse en nodos de Swarm. Los servicios se pueden replicar para ejecutarse en multiples nodos. En el modelo de servicio replicados, el equilibrio de carga de ingreso y el DNS internos se pueden usar para proporcionar puntos finales de servicio altamente disponibles.
