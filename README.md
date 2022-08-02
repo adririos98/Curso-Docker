@@ -110,8 +110,8 @@ Este sistema nos permite ver esa carpeta desde el contenedor y también desde nu
 1. Hacer correr un contenedor.
 2. Acceder al contenedor.
 3. Crear un fichero en /tmp.
-4. Guardar el contenedor (**docker commit [ID_CONTENEDOR]**)
-5. Asignar un nombre al contenedor creado (**docker tag [ID_IMAGEN] [NOMBRE:ETIQUETA]**)
+4. Generar una imagen del contenedor mientras se encuentra corriendo. (**docker commit [ID_CONTENEDOR]**)
+5. Asignar un nombre a la imagen creada. (**docker tag [ID_IMAGEN] [NOMBRE:ETIQUETA]**)
 6. Probar que el fichero existe en esta nueva imagen.
 
 ## Personalizando una imagen a nuestro gusto.
