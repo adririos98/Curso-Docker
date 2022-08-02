@@ -60,7 +60,18 @@ Se puede asignar recursos definidos como el % de CPU, el % de RAM a los contened
 * Para ver el detalle de un contenedor:
 > docker inspect [ID_CONTAINER] 
 
-### 1.3. Red.
+### 1.3. Puertos.
+* Conectarse al contenedor por un puerto local del equipo anfitrión.
+> docker container run -d -p 8080:80 nginx
+* Asignar puertos aleatorios a un contenedor.
+> docker container run -d -P nginx
+* Mostrar varios puertos.
+> docker container run -d -p 8080:80 -p 3001:3000 -p 2222:2222 nginx (**Tener cuidado con el puerto 22**)
+* Listar puertos abiertos de un contenedor.
+> docker container port [ID_CONTENEDOR]
+
+
+### 1.4. Red.
 En docker se dispone de 3 tipos de redes preconfiguradas para poder ser usadas:
 
 * 1. Bridge: red standard que usarán todos los contenedores.
@@ -74,7 +85,7 @@ En docker se dispone de 3 tipos de redes preconfiguradas para poder ser usadas:
 * Para crear una red nueva:
 > docker network create [Nombre_red]
 
-#### 1.3.1. ¿Como se usa la red en un contenedor?
+#### 1.4.1. ¿Como se usa la red en un contenedor?
 Si no se indica el tipo de red, por defecto sera **bridge**
 
 * Para crear una red especifica:
@@ -86,7 +97,7 @@ Si no se indica el tipo de red, por defecto sera **bridge**
 * Para eliminar una red:
 > docker network delete [Nombre_red]
 
-### 1.4. Volúmenes.
+### 1.5. Volúmenes.
 En este apartado hablaremos sobre lo tipos de volúmenes existentes en docker, hay 3 tipos de volúmenes:
 
 * Volumen: es la manera sencilla y predefinida para almacenar todos los ficheros en un contenedor, usa el espacio de Host en **/var/lib/docker/volumes** y crea una carpeta para cada contenedor.
@@ -106,7 +117,7 @@ Este sistema nos permite ver esa carpeta desde el contenedor y también desde nu
 * Ejemplo:
 > docker run -d -it --name [NOMBRE_CONTENEDOR] --tmpfs [/RUTA/TEMPORAL] [NOMBRE_IMAGEN]
 
-### 1.5 Personalizar un contenedor que se encuentra corriendo. EJERCICIO
+### 1.6 Personalizar un contenedor que se encuentra corriendo. EJERCICIO
 1. Hacer correr un contenedor ubuntu.
 2. Acceder al contenedor.
 3. Crear un fichero en /tmp.
@@ -138,6 +149,17 @@ EXPOSE 80
 # Establece el commando del proceso de inicio del contenedor
 CMD [“nginx”]
 ```
+
+## Ejercicio FINAL INTRODUCCIÓN:
+ a) Realizar una imagen mediante dockerfile. (Nombre del fichero **Dockefilelabs-[TUNOMBRE]**)
+    - Debe contener 4 variables definidas en el dockerfile (*Las que quieras*)
+    - Debe exponer el puerto 80 y 443
+    - Debe tener instalado git y curl.
+ b) Averiguar el comando para generar la imagen a partir de un fichero de dockerfile. **[INVESTIGACIÓN]**
+    > docker build --file [Nombre_fichero] -t [NOMBRE_IMAGEN:ETIQUETA] . 
+ c) Crear un contenedor con la imagen creada.
+
+
 
 ## 2. Level UP - DOCKER-COMPOSE.
 herramienta para definir y ejecutar aplicaciones Docker multicontenedor que permite simplificar el uso de Docker a partir de archivos YAML, de está forma es mas sencillo crear contenedores que se relacionen entre sí, conectarlos, habilitar puertos, volúmenes, etc. Nos permite lanzar un solo comando para crear e iniciar todos los servicios desde su configuración(YAML), esto significa que puedes crear diferentes contenedores y al mismo tiempo diferentes servicios en cada contenedor, integrarlos a un volumen común e iniciarlos y/o apagarlos, etc. Este es un componente fundamental para poder construir aplicaciones y microservicios.
