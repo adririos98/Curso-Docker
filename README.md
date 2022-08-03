@@ -228,13 +228,7 @@ Ejecutamos el compose de nuevo:
 > docker cp web/. web_apache:/var/www/html
 
 ## EJERCICIO 3
-
-Planteo lo sgt, como hariamos para instalar Wordpress en un contenedor? ... me adelanto, NO NO NO y NO no podemos instalar apache, mysql, php, wordpress en un contendor, ya que este esquema es para una Maquina Fisica o Virtual, en contenedores debemos separar todas las aplicaciones y/o servicios en unicos contenedores... ok? , entonces, ahora, vamos a realizar esta instalacion de Wordpress de esta manera: 1 contenedor para wordpress ( y todas sus dependencias ) - 1 contenedor para la base de datos.
-
-Obs.
-En la carpeta wordpress, encontrarás el archivo **docker-compose.yml** el cual abarca la instalacion de Docker como hemos comentado, y es la forma "actual" que se usa para "linkear" contenedores o "enlazarlos", ya que el comando linked esta deprecado pero aun se puede user, *teniendo en cuenta la version de 2.x/3 de docker-compose.*
-
-Para ejecutarlo, debemos ubicarnos en la carpeta: *wordpress*
+En la carpeta de EJERCICIO 3, tenemos el archivo **docker-compose.yml** el cual tiene la instalación de Docker y es la forma "actual" que se usa para enlazar contenedores.
 
 > docker-compose up -d
 
@@ -250,7 +244,7 @@ Entonces, lo que vamos hacer es usando este comando "deprecado" ojo! aun se pued
 
 >docker run -dit --name wordpress --link **dbw-mysql**:mysql -p 8380:80 wordpress
 
-Abrimos un browser colocando la ip del HOST en el puerto 8380 y procedemos a realizar la instalacion.
+Abrimos un browser colocando la ip del HOST en el puerto 8380 y procedemos a realizar la instalación.
 
 **OBS.**
 Debemos colocar el nombre del contenedor de mysql, para este ejm. *dbw-mysql*
@@ -258,16 +252,14 @@ Debemos colocar el nombre del contenedor de mysql, para este ejm. *dbw-mysql*
 
 ## EJERCICIO 4
 
-Demos un poco mas de complejidad a nuestra arquitectura actual, para ello, vamos a crear un proxy reverse con Nginx (solo para el puerto 80, para el puerto 443, es otro precio :p, no es broma! lo iré colocando mas adelante, como un *paso6*.
-En el archivo **docker-compose.yml** tenemos la creación del proxy reverso, asi como la creación de un contenedor web ( apache )y un conenedor web nginx, el proxy accederá a los aplicativos por el puerto 8080, 8081.
+Demos un poco mas de complejidad a nuestra arquitectura actual, para ello, vamos a crear un proxy reverse con Nginx (solo para el puerto 80.
+En el archivo **docker-compose.yml** tenemos la creación del proxy reverso, asi como la creación de un contenedor web ( apache )y un contenedor web nginx, el proxy accederá a los aplicativos por el puerto 8080, 8081.
 
-Antes de crear los contenedores, vamos a crear la sgt red: **docker network create nginx_redproxy**
-
-Para inicializar los contenedores, nos ubicamos en la carpeta *proxyapp*
-
+Antes de crear los contenedores, vamos a crear la sgt red: 
+>**docker network create nginx_redproxy**
 > docker compose up -d 
 
-Validamos ingresando la ip de http://HOST:8080 y/o http://HOST:8081
+Validamos ingresando la ip de http://HOST_FISICO:8080 y/o http://HOST_FISICO:8081
 
 
 ## 3. Level TOP - DOCKER SWARM. [EXPERTO] 
