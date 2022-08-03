@@ -262,6 +262,10 @@ Antes de crear los contenedores, vamos a crear la sgt red:
 Validamos ingresando la ip de http://HOST_FISICO:8080 y/o http://HOST_FISICO:8081
 
 
+## EJERCICIO 5
+Este ejercicio es para explicar la **generación** *de una imagen a partir de un docker-compose* y el uso de variables definidas en un fichero **.ENV**
+
+
 ## 3. Level TOP - DOCKER SWARM. [EXPERTO] 
 **ESTE APARTADO ES OPCIONAL. ESTA DISEÑADO PARA TODOS AQUELLOS QUE QUIERAN SEGUIR APRENDIENDO SOBRE DOCKER Y SU SOLUCIÓN DE CLUSTER.**
 
