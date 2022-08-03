@@ -441,9 +441,6 @@ Analizemos este ejemplo:
 
 >**docker service create --name my-web --publish 8080:80 --replicas 2 nginx**
 
-![routing_mesh](https://github.com/kdetony/docker-swarm/blob/master/images/ingress-routing-mesh.png)
-
-
 ### Ejercicio 3 
 
 Vamos ahora a ver el update de imágenes, supongamos que tenemos la aplicación Grafana con la version 5.0 y queremos desplegar en nuestro Cluster, bueno lo podemos hacer de la siguiente manera: 
