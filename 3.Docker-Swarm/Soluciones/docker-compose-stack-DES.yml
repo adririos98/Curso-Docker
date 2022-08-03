@@ -1,0 +1,190 @@
+version: '3.2'
+services:
+  wso2eiana-worker:
+    image: docker.wso2.com/wso2ei-analytics-worker:6.6.0.107
+    deploy:
+      placement:
+         constraints: [node.hostname == PEPELIDESWSO2EI01]
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.7'
+          memory: 1024M
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+    hostname: worker
+    ports:
+      - 9091:9091
+      - 9444:9444
+      - 7612:7612
+      - 7712:7712
+      - 7070:7070
+      - 7443:7443
+    volumes:
+      # mounting configurations
+      - /opt/wso2_ei_6.6/docker-compose/integrator-analytics-DES/worker:/home/wso2carbon/wso2-config-volume
+      - /var/log/wso2ei/worker:/home/wso2carbon/wso2ei-6.6.0/wso2/analytics/wso2/worker/logs
+      - /opt/wso2_ei_6.6/certificados/DES:/home/wso2carbon/wso2ei-6.6.0/wso2/analytics/resources/security
+    env_file:
+      - ../vars/varsDES.env
+    environment:
+      - TZ=Europe/Madrid
+    secrets:
+      - PASSBD_EI_ANALYTICS
+
+  wso2eiana-dashboard:
+    image: docker.wso2.com/wso2ei-analytics-dashboard:6.6.0.107
+    deploy:
+      placement:
+         constraints: [node.hostname == PEPELIDESWSO2EI01]
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.7'
+          memory: 1024M
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+    hostname: dashboard
+    ports:
+      - 9643:9643
+      - 9611:9611
+      - 9711:9711
+    env_file:
+      - ../vars/varsDES.env
+    environment:
+      - TZ=Europe/Madrid
+    volumes:
+      - /opt/wso2_ei_6.6/docker-compose/integrator-analytics-DES/dashboard:/home/wso2carbon/wso2-config-volume
+      - /var/log/wso2ei/dashboard:/home/wso2carbon/wso2ei-6.6.0/wso2/analytics/wso2/dashboard/logs
+      - /opt/wso2_ei_6.6/certificados/DES:/home/wso2carbon/wso2ei-6.6.0/wso2/analytics/resources/security
+    secrets:
+      - PASSBD_EI_ANALYTICS
+      - PASSBD_ANALYTICS_DASHBOARD
+      - PASSBD_ANALYTICS_PERMISSIONS
+      - PASS_EI
+
+  wso2ei-nodo01:
+    image: docker.wso2.com/wso2ei-integrator:6.6.0.107
+    deploy:
+      placement:
+         constraints: [node.hostname == PEPELIDESWSO2EI01]
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1.6'
+          memory: 4096M
+        reservations:
+          cpus: '0.5'
+          memory: 1024M
+    hostname: nodo01
+    command: 
+      - chmod 777 /home/wso2carbon/docker-entrypoint.sh; chmod +x /home/wso2carbon/docker-entrypoint.sh; chown wso2carbon:wso2carbon /home/wso2carbon/docker-entrypoint.sh 
+    ports:
+      - target: 9443
+        published: 9443
+        protocol: tcp
+        mode: host
+      - target: 8243
+        published: 8243
+        protocol: tcp
+        mode: host
+      - target: 8280
+        published: 8280
+        protocol: tcp
+        mode: host
+      - target: 4100
+        published: 4100
+        protocol: tcp
+        mode: host
+    volumes:
+      # mounting configurations
+      - /opt/wso2_ei_6.6/docker-compose/integrator-analytics-DES/integrator01:/home/wso2carbon/wso2-config-volume/
+      - /opt/nfs/wso2/nfs-server:/home/wso2carbon/nfs-server/
+      - /opt/wso2_ei_6.6/datos_del_nfs_compartido/docker-entrypoint/docker-entrypoint.sh:/home/wso2carbon/docker-entrypoint.sh
+      - /var/log/wso2ei:/home/wso2carbon/wso2ei-6.6.0/repository/logs
+      #- /opt/wso2_ei6.6-analytics/certificados/DES:/home/wso2carbon/wso2ei-6.6.0/repository/resources/security
+      - /opt/wso2_ei_6.6/certificados/DES:/home/wso2carbon/wso2ei-6.6.0/repository/resources/security
+    env_file:
+      - ../vars/varsDES.env
+    environment:
+      - TZ=Europe/Madrid
+    depends_on:
+      - wso2eiana-worker
+      - wso2eiana-dashboard
+    secrets:
+      - PASS_CarbonDB_01
+      - PASS_CarbonDB_02
+      - PASS_WSO2RegistryDB
+      - PASS_WSO2UMDB
+      - PASS_EI
+      - PASS_ANALYTICS
+
+  # wso2ei-nodo02:
+  #   image: docker.wso2.com/wso2ei-integrator:6.6.0.70
+  #   deploy:
+  #     placement:
+  #        constraints: [node.hostname == PEPELIDESWSO2EI01]
+  #     replicas: 1
+  #   hostname: nodo02
+  #   command: 
+  #     - chmod 777 /home/wso2carbon/docker-entrypoint.sh; chmod +x /home/wso2carbon/docker-entrypoint.sh; chown wso2carbon:wso2carbon /home/wso2carbon/docker-entrypoint.sh 
+  #   ports:
+  #     - target: 9443
+  #       published: 9443
+  #       protocol: tcp
+  #       mode: host
+  #     - target: 8243
+  #       published: 8243
+  #       protocol: tcp
+  #       mode: host
+  #     - target: 8280
+  #       published: 8280
+  #       protocol: tcp
+  #       mode: host
+  #     - target: 4200
+  #       published: 4200
+  #       protocol: tcp
+  #       mode: host
+  #   volumes:
+  #     # mounting configurations
+  #     - /opt/wso2_ei6.6-analytics/docker-compose/integrator-analytics/integrator02:/home/wso2carbon/wso2-config-volume/
+  #     - /mnt/nfs/wso2/nfs-server:/home/wso2carbon/nfs-server/
+  #     - /mnt/nfs/wso2/docker-entrypoint/docker-entrypoint.sh:/home/wso2carbon/docker-entrypoint.sh
+  #     - /var/log/wso2ei:/home/wso2carbon/wso2ei-6.6.0/repository/logs
+  #     - /opt/wso2_ei6.6-analytics/certificados/DES:/home/wso2carbon/wso2ei-6.6.0/repository/resources/security
+  #   env_file:
+  #     - ../vars/varsDES.env
+  #   environment:
+  #     - TZ=Europe/Madrid
+  #   depends_on:
+  #     - wso2eiana-worker
+  #     - wso2eiana-dashboard
+  #   secrets:
+  #     - PASS_CarbonDB_01
+  #     - PASS_CarbonDB_02
+  #     - PASS_WSO2RegistryDB
+  #     - PASS_WSO2UMDB
+  #     - PASS_EI
+  #     - PASS_ANALYTICS
+
+secrets:
+  PASS_CarbonDB_01:
+    external: true
+  PASS_CarbonDB_02:
+    external: true
+  PASS_WSO2UMDB:
+    external: true
+  PASS_WSO2RegistryDB:
+    external: true
+  PASS_EI:
+    external: true
+  PASSBD_EI_ANALYTICS:
+    external: true
+  PASS_ANALYTICS:
+    external: true
+  PASSBD_ANALYTICS_DASHBOARD:
+    external: true  
+  PASSBD_ANALYTICS_PERMISSIONS:
+    external: true
