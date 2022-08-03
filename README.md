@@ -134,7 +134,7 @@ Es como la receta necesaria para un banquete, en este caso el Dockerfile es nece
 # Descarga la imagen de Ubuntu 22.04
 FROM ubuntu:22.04
 # Mantenedor del contenedor
-MAINTANER Adrián Hernández Rios e.epgsev1.tid@telefonica.com
+MAINTAINER AdriánHernándezRios e.epgsev1.tid@telefonica.com
 # Actualiza la imagen base de Ubuntu 14.04
 RUN apt-get update
 # Definir ambiente de entorno
