@@ -181,6 +181,95 @@ herramienta para definir y ejecutar aplicaciones Docker multicontenedor que perm
 Docker-Compose funciona en todos los entornos: production, staging, development, testing, así como flujos de trabajo basados en Continuous Integration(CI).
 
 
+## EJERCICIO 1: Despliegue contenedor web y database
+
+En la carpeta **2.Docker-compose/Soluciones/EJERCICIO1**, tenemos el fichero *docker-compose.yml* quien orquestará toda la creación de contenedores que necesitemos, para ello debemos ejecutar el comando: 
+
+>**docker-compose up -d**
+
+Lo que realizara *docker-compose.yml* es aquí el tremendo potencial que tiene, y es la sintaxis **build**, pues mediante docker-compose podemos indicarle que lea un Dockerfile, caso contrario podemos usar **image** para que pueda usar la imagen descargada en nuestro Host. La sintaxis **container_name** asigna un nombre a nuestro contenedor, **enviroment** sirve para setear las variables de entorno, para nuestro caso, passwd, user para mariadb, la sintaxis **volume** asigno el mismo al contendor.
+
+### OBS.
+
+* Para visualizar la web, vamos a ingresar via un browser, colocando la IP Publica.
+
+* Si al acceder a la Web, nos encontramos con un Forbiden ( 403 ), debemos entrar al contenedor y crear un **index.html**
+
+> docker exec -it ID_CONTAINER bash
+> touch index.html /var/Www/html/
+
+## EJERCICIO 2
+
+Modificar nuestro docker-compose, en esta linea:
+**sg1:/var/www/html:rw**
+por el valor:
+**sg1:/var/www/html:ro**
+
+Levantar de nuevo el compose.
+
+> docker-compose up -d
+
+Ahora se va a copiar la carpeta que se encuentra en EJERCICIO2 llamada web en el contenedor, para ello vamos a usar el comando:
+
+> **docker cp web/.  web_apache:/var/www/html**
+
+¿A qué se debe el mensaje de error?
+
+**Error response from daemon: mounted volume is marked read-only**
+
+Al declarar el volumen como RO (Red-Only), no se dispone de permisos de escritura en el contenedor.
+
+### SOLUCIÓN:
+- Copiar la data desde el HOST hacia el volumen creado.
+- La segunda opción es cambiar en el fichero de *docker-compose* los valores nuevamente y dejarlo con RW.
+
+Ejecutamos el compose de nuevo: 
+> **docker-compose up -d**
+> docker cp web/. web_apache:/var/www/html
+
+## EJERCICIO 3
+
+Planteo lo sgt, como hariamos para instalar Wordpress en un contenedor? ... me adelanto, NO NO NO y NO no podemos instalar apache, mysql, php, wordpress en un contendor, ya que este esquema es para una Maquina Fisica o Virtual, en contenedores debemos separar todas las aplicaciones y/o servicios en unicos contenedores... ok? , entonces, ahora, vamos a realizar esta instalacion de Wordpress de esta manera: 1 contenedor para wordpress ( y todas sus dependencias ) - 1 contenedor para la base de datos.
+
+Obs.
+En la carpeta wordpress, encontrarás el archivo **docker-compose.yml** el cual abarca la instalacion de Docker como hemos comentado, y es la forma "actual" que se usa para "linkear" contenedores o "enlazarlos", ya que el comando linked esta deprecado pero aun se puede user, *teniendo en cuenta la version de 2.x/3 de docker-compose.*
+
+Para ejecutarlo, debemos ubicarnos en la carpeta: *wordpress*
+
+> docker-compose up -d
+
+Entonces, lo que vamos hacer es usando este comando "deprecado" ojo! aun se puede seguir usandolo sin problema, y sera asi:
+
+#### Instalando Mysql version 5.7
+
+> docker volume create red_wordpress
+
+> docker run -dit -v /home/kdetony/mysql:/var/lib/mysql --net red_wordpress --name **dbw-mysql** -e MYSQL_DATABASE=wordpress -e MYSQL_ROOT_PASSWORD=password  mysql:5.7
+
+#### Realizando el Link entre contenedores 
+
+>docker run -dit --name wordpress --link **dbw-mysql**:mysql -p 8380:80 wordpress
+
+Abrimos un browser colocando la ip del HOST en el puerto 8380 y procedemos a realizar la instalacion.
+
+**OBS.**
+Debemos colocar el nombre del contenedor de mysql, para este ejm. *dbw-mysql*
+
+
+## EJERCICIO 4
+
+Demos un poco mas de complejidad a nuestra arquitectura actual, para ello, vamos a crear un proxy reverse con Nginx (solo para el puerto 80, para el puerto 443, es otro precio :p, no es broma! lo iré colocando mas adelante, como un *paso6*.
+En el archivo **docker-compose.yml** tenemos la creación del proxy reverso, asi como la creación de un contenedor web ( apache )y un conenedor web nginx, el proxy accederá a los aplicativos por el puerto 8080, 8081.
+
+Antes de crear los contenedores, vamos a crear la sgt red: **docker network create nginx_redproxy**
+
+Para inicializar los contenedores, nos ubicamos en la carpeta *proxyapp*
+
+> docker compose up -d 
+
+Validamos ingresando la ip de http://HOST:8080 y/o http://HOST:8081
+
+
 ## 3. Level TOP - DOCKER SWARM. [EXPERTO] 
 **ESTE APARTADO ES OPCIONAL. ESTA DISEÑADO PARA TODOS AQUELLOS QUE QUIERAN SEGUIR APRENDIENDO SOBRE DOCKER Y SU SOLUCIÓN DE CLUSTER.**
 
@@ -305,6 +394,7 @@ i38hw0fjukjnvdlvdt8hpsith     worker2      Ready     Active                     
 ## Ejemplo de YAML.
 
 ``` bash
+
 
 
 ```
