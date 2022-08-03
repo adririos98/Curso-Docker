@@ -1,3 +1,4 @@
+```shell
 [root@anacoluto-win ~]# docker run -dit ubuntu:22.04
 ff4658a0d2d1847879aad9cb7c1cfbdc3c03efe15cebe54787e5d09da9cc0824
 
@@ -35,3 +36,4 @@ REPOSITORY                                               TAG             IMAGE I
 [root@anacoluto-win ~]# docker image ls
 REPOSITORY                                               TAG             IMAGE ID       CREATED              SIZE
 prueba-curso                                             1.0             7a761719b535   About a minute ago   77.8MB
+```
