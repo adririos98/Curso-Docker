@@ -2,7 +2,7 @@ version: "3"
 
 services:
   myapp:
-    image: myapp:latest
+    image: app
     ports:
       - 5000:5000
     environment:
@@ -13,7 +13,7 @@ services:
       POSTGRES_PORT: 5432
 
   db:
-    image: postgres:latest
+    image: postgres
     hostname: mypostgres
     ports: 
       - 5432:5432
