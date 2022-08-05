@@ -231,7 +231,7 @@ Ejecutamos el compose de nuevo:
 ## EJERCICIO PARA PRACTICAR DEL 3 y 4.
 El resto de ejercicios es para poner en práctica todo lo aprendido y ver muchas opciones diferentes de configuración a nivel de docker-compose.
 
-# CONFIGURAR ACCESO A UN REGISTRY PRIVADO Y ACCEDER.
+## CONFIGURAR ACCESO A UN REGISTRY PRIVADO Y ACCEDER.
 [Ejercicio de investigación]
 
 ## 3. Level TOP - DOCKER SWARM. [EXPERTO] 
