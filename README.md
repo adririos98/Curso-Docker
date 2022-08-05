@@ -228,7 +228,7 @@ Ejecutamos el compose de nuevo:
 > docker cp web/. web_apache:/var/www/html
 
 
-## EJERCICIO PARA PRACTICAR DEL 3 AL 8.
+## EJERCICIO PARA PRACTICAR DEL 3 AL 5.
 El resto de ejercicios hasta el 8 es para poner en práctica todo lo aprendido y ver muchas opciones diferentes de configuración a nivel de docker-compose.
 
 

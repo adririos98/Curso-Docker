@@ -1,22 +1,31 @@
-version: "3"
+version: '3.1'
 
 services:
-  myapp:
-    image: app
+
+  wordpress:
+    image: wordpress
+    restart: always
     ports:
-      - 5000:5000
+      - 8080:80
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: myappdb
-      POSTGRES_HOST: mypostgres
-      POSTGRES_PORT: 5432
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
+    volumes:
+      - wordpress:/var/www/html
 
   db:
-    image: postgres
-    hostname: mypostgres
-    ports: 
-      - 5432:5432
+    image: mysql:5.7
+    restart: always
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: mypassword
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:
