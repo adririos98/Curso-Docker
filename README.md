@@ -227,43 +227,9 @@ Ejecutamos el compose de nuevo:
 > **docker-compose up -d**
 > docker cp web/. web_apache:/var/www/html
 
-## EJERCICIO 3
-En la carpeta de EJERCICIO 3, tenemos el archivo **docker-compose.yml** el cual tiene la instalación de Docker y es la forma "actual" que se usa para enlazar contenedores.
 
-> docker-compose up -d
-
-Entonces, lo que vamos hacer es usando este comando "deprecado" ojo! aun se puede seguir usandolo sin problema, y sera asi:
-
-#### Instalando Mysql version 5.7
-
-> docker volume create red_wordpress
-
-> docker run -dit -v /home/kdetony/mysql:/var/lib/mysql --net red_wordpress --name **dbw-mysql** -e MYSQL_DATABASE=wordpress -e MYSQL_ROOT_PASSWORD=password  mysql:5.7
-
-#### Realizando el Link entre contenedores 
-
->docker run -dit --name wordpress --link **dbw-mysql**:mysql -p 8380:80 wordpress
-
-Abrimos un browser colocando la ip del HOST en el puerto 8380 y procedemos a realizar la instalación.
-
-**OBS.**
-Debemos colocar el nombre del contenedor de mysql, para este ejm. *dbw-mysql*
-
-
-## EJERCICIO 4
-
-Demos un poco mas de complejidad a nuestra arquitectura actual, para ello, vamos a crear un proxy reverse con Nginx (solo para el puerto 80.
-En el archivo **docker-compose.yml** tenemos la creación del proxy reverso, asi como la creación de un contenedor web ( apache )y un contenedor web nginx, el proxy accederá a los aplicativos por el puerto 8080, 8081.
-
-Antes de crear los contenedores, vamos a crear la sgt red: 
->**docker network create nginx_redproxy**
-> docker compose up -d 
-
-Validamos ingresando la ip de http://HOST_FISICO:8080 y/o http://HOST_FISICO:8081
-
-
-## EJERCICIO 5
-Este ejercicio es para explicar la **generación** *de una imagen a partir de un docker-compose* y el uso de variables definidas en un fichero **.ENV**
+## EJERCICIO PARA PRACTICAR DEL 3 AL 8.
+El resto de ejercicios hasta el 8 es para poner en práctica todo lo aprendido y ver muchas opciones diferentes de configuración a nivel de docker-compose.
 
 
 ## 3. Level TOP - DOCKER SWARM. [EXPERTO] 
