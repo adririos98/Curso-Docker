@@ -184,6 +184,8 @@ CMD [“nginx”]
 herramienta para definir y ejecutar aplicaciones Docker multicontenedor que permite simplificar el uso de Docker a partir de archivos YAML, de está forma es mas sencillo crear contenedores que se relacionen entre sí, conectarlos, habilitar puertos, volúmenes, etc. Nos permite lanzar un solo comando para crear e iniciar todos los servicios desde su configuración(YAML), esto significa que puedes crear diferentes contenedores y al mismo tiempo diferentes servicios en cada contenedor, integrarlos a un volumen común e iniciarlos y/o apagarlos, etc. Este es un componente fundamental para poder construir aplicaciones y microservicios.
 Docker-Compose funciona en todos los entornos: production, staging, development, testing, así como flujos de trabajo basados en Continuous Integration(CI).
 
+## EJERCICIO 0: Instalar docker-compose.
+[Investigación]
 
 ## EJERCICIO 1: Despliegue contenedor web y database
 
@@ -270,15 +272,14 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 # creación resto maquinas
 docker-machine create -d virtualbox worker1
-
 docker-machine create -d virtualbox worker2
 
 # lista maquinas creadas
 docker-machine ls 
 NAME       ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
-manager1   -        virtualbox   Running   tcp://192.168.33.102:2376           v19.03.5   
-worker1    -        virtualbox   Running   tcp://192.168.33.103:2376           v19.03.5   
-worker2    -        virtualbox   Running   tcp://192.168.33.104:2376           v19.03.5 
+manager1   -        virtualbox   Running   tcp://192.168.33.102:2376           v20.10.17   
+worker1    -        virtualbox   Running   tcp://192.168.33.103:2376           v20.10.17   
+worker2    -        virtualbox   Running   tcp://192.168.33.104:2376           v20.10.17 
 
 
 - Swarm con maquinas virtuales en ejecución
@@ -336,9 +337,9 @@ docker-machine ssh manager1
 docker node ls
 
 ID                            HOSTNAME     STATUS    AVAILABILITY     MANAGER STATUS      ENGINE VERSION
-7tn2zpmalg5cye47kdloy26ns *   manager1     Ready     Active           Leader              19.03.5
-gyg6ros9ft2jqpkizlwscv583     worker1      Ready     Active                               19.03.5
-i38hw0fjukjnvdlvdt8hpsith     worker2      Ready     Active                               19.03.5
+7tn2zpmalg5cye47kdloy26ns *   manager1     Ready     Active           Leader              20.10.17
+gyg6ros9ft2jqpkizlwscv583     worker1      Ready     Active                               20.10.17
+i38hw0fjukjnvdlvdt8hpsith     worker2      Ready     Active                               20.10.17
 ```
 
 ## Ejemplo de YAML.
