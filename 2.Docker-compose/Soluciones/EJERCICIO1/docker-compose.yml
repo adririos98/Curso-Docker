@@ -22,7 +22,7 @@ services:
       - "80:80"
     volumes:
       - sg1:/var/www/html:rw
-      - ./index.html:/var/www/html/index.html   
+      - .:/var/www/html
     networks:
      - app
 

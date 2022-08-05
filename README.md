@@ -196,7 +196,7 @@ Lo que realizara *docker-compose.yml* es aquí el tremendo potencial que tiene, 
 * Si al acceder a la Web, nos encontramos con un Forbiden ( 403 ), debemos entrar al contenedor y crear un **index.html**
 
 > docker exec -it ID_CONTAINER bash
-> touch index.html /var/Www/html/
+> touch index.html /var/www/html/
 
 ## EJERCICIO 2
 
