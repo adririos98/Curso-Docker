@@ -3,7 +3,7 @@
 # Descarga la imagen de Ubuntu 22.04
 FROM ubuntu:22.04
 # Mantenedor del contenedor
-MAINTAINER AdriánHernándezRios e.epgsev1.tid@telefonica.com
+MAINTAINER AdriánHernándezRios adrian.sevilla@dockercurso.com
 # Definir ambiente de entorno
 ENV PRUEBA1 datos1
 ENV PRUEBA2 datos2
@@ -25,7 +25,7 @@ EXPOSE 53
 Sending build context to Docker daemon  1.275GB
 Step 1/10 : FROM ubuntu:22.04
  ---> 27941809078c
-Step 2/10 : MAINTAINER AdriánHernándezRios e.epgsev1.tid@telefonica.com
+Step 2/10 : MAINTAINER AdriánHernándezRios adrian.sevilla@dockercurso.com
  ---> Using cache
  ---> 277fcdbed95d
 Step 3/10 : ENV PRUEBA1 datos1
