@@ -9,7 +9,7 @@ Curso de docker desde cero y para todos.
 - https://docs.docker.com/engine/reference/commandline/docker/
 
 ## Chuleta comandos Docker.
-[Comandos](https://pbs.twimg.com/media/FBhs0p7X0A4fNq0.jpg)
+![Comandos](https://pbs.twimg.com/media/FBhs0p7X0A4fNq0.jpg)
 
 ## 1. Introducción a los conceptos de docker. [NOVATO]
 ### 1.1. Imágenes.
