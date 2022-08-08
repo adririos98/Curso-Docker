@@ -8,6 +8,9 @@ Curso de docker desde cero y para todos.
 - https://docs.docker.com/machine/
 - https://docs.docker.com/engine/reference/commandline/docker/
 
+## Chuleta comandos Docker.
+[Comandos](https://pbs.twimg.com/media/FBhs0p7X0A4fNq0.jpg)
+
 ## 1. Introducción a los conceptos de docker. [NOVATO]
 ### 1.1. Imágenes.
 Las imágenes en Docker, es el núcleo de un contenedor, es decir, sin la imagen el contenedor no puede existir. Las imágenes albergan un sistema operativo, una aplicación, un sandbox, etc. Las imágenes se pueden personalizar para crear desarrollos personalizados a nuestras necesidades. Dentro de una imagen podemos indicarle que puerto usar así como la ejecución de un script de requerirse. Multi-stage (Significado: Ejecución de un número determinado de imágenes para obtener una imagen como resultado)
